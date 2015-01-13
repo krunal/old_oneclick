@@ -1,0 +1,27 @@
+mysql: &mysql
+  adapter: mysql2
+  host: localhost
+  port: 3306
+  username: root
+  password: mysql
+  socket: /tmp/mysql.sock
+  charset: utf8
+  collation: utf8_bin
+
+# Comment the the mysql line and uncomment the postgres line
+# if you want to use postgres
+default: &default
+  # Choose one of the following
+  <<: *mysql
+  #<<: *postgres
+
+  # Should match environment.sidekiq.concurrency
+  #pool: 25
+
+##################################################
+#### CONFIGURE ABOVE #############################
+##################################################
+
+development:
+  <<: *default
+  database: oneclick_development
